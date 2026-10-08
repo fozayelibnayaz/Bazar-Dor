@@ -10,7 +10,7 @@ export default function ProductPriceSummary({ product }: { product: Product }) {
   const cards = [
     { label: "সর্বনিম্ন দাম", value: min, note: "সবচেয়ে কম দামের বাজার", tone: "text-down" },
     { label: "সর্বোচ্চ দাম", value: max, note: "সবচেয়ে বেশি দামের বাজার", tone: "text-up" },
-    { label: "গড় দাম", value: average, note: `${unitLabel(product.unit)}-এর হিসাব`, tone: "text-ink" },
+    { label: "গড় দাম", value: average, note: `${unitLabel(product.unit)}-এর হিসাব`, tone: "text-down" },
   ];
 
   return (

@@ -22,7 +22,7 @@ export default function CategoryPills({ categories }: { categories: Category[] }
                 : "flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-medium text-muted transition hover:bg-brand-soft hover:text-ink"
             }
           >
-            <span className={isActive ? "" : "opacity-60 grayscale"}>{category.icon}</span>
+            <span className="text-base">{category.icon}</span>
             {category.nameBn}
           </Link>
         );

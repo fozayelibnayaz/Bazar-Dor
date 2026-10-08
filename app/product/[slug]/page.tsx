@@ -20,12 +20,8 @@ export default async function ProductPage({ params }: Props) {
   }
 
   const difference = Math.abs(product.today - product.yesterday);
-  const changeText =
-    product.change.dir === "up"
-      ? "গতকালের তুলনায় আজ দাম বেড়েছে"
-      : product.change.dir === "down"
-        ? "গতকালের তুলনায় আজ দাম কমেছে"
-        : "গতকালের তুলনায় আজ দাম অপরিবর্তিত";
+  const changeWord =
+    product.change.dir === "up" ? "বেড়েছে" : product.change.dir === "down" ? "কমেছে" : "অপরিবর্তিত";
 
   return (
     <main className="pb-14">
@@ -53,11 +49,16 @@ export default async function ProductPage({ params }: Props) {
                 {unitLabel(product.unit)} · {product.categoryNameBn}
               </p>
               <p className="mt-2 text-sm text-muted">
-                {changeText}
+                গতকালের তুলনায় আজ দাম{" "}
+                <span className="font-bold text-ink">{changeWord}</span>
                 {product.change.dir !== "flat" ? (
                   <>
                     {" · "}
-                    <span className={product.change.dir === "up" ? "text-up" : "text-down"}>
+                    <span
+                      className={`font-bold ${
+                        product.change.dir === "up" ? "text-up" : "text-down"
+                      }`}
+                    >
                       {bnMoney(difference)} টাকা
                     </span>
                   </>
