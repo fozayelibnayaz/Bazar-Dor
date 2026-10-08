@@ -63,7 +63,7 @@ export default function SignInForm() {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           placeholder="you@example.com"
-          className="mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink outline-none placeholder:text-muted focus:border-brand"
+          className="mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-3 text-sm text-ink outline-none placeholder:text-muted focus:border-brand"
         />
 
         <label htmlFor="password" className="mt-4 block text-sm font-medium text-ink">
@@ -77,7 +77,7 @@ export default function SignInForm() {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           placeholder="কমপক্ষে ৮ অক্ষর"
-          className="mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink outline-none placeholder:text-muted focus:border-brand"
+          className="mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-3 text-sm text-ink outline-none placeholder:text-muted focus:border-brand"
         />
 
         <button

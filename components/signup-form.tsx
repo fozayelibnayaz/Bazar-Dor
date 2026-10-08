@@ -48,7 +48,7 @@ export default function SignUpForm() {
   }
 
   return (
-    <div className="mx-auto max-w-md px-4 py-12">
+    <div className="mx-auto max-w-lg px-4 py-12">
       <h1 className="text-center text-2xl font-bold text-ink sm:text-3xl">আকাউন্ট তৈরি করুন</h1>
       <p className="mt-2 text-center text-sm text-muted">
         বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।
@@ -56,7 +56,7 @@ export default function SignUpForm() {
 
       <form
         onSubmit={handleSubmit}
-        className="mt-6 rounded-2xl border border-line bg-white p-6 sm:p-7"
+        className="mt-6 rounded-2xl border border-line bg-white p-6 shadow-[0_18px_50px_-30px_rgba(20,22,26,0.4)] sm:p-8"
       >
         <label htmlFor="name" className="text-sm font-medium text-ink">
           নাম
@@ -69,7 +69,7 @@ export default function SignUpForm() {
           value={name}
           onChange={(event) => setName(event.target.value)}
           placeholder="যেমন: রহিম উদ্দিন"
-          className="mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink outline-none placeholder:text-muted focus:border-brand"
+          className="mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-3 text-sm text-ink outline-none placeholder:text-muted focus:border-brand"
         />
 
         <label htmlFor="email" className="mt-4 block text-sm font-medium text-ink">
@@ -83,7 +83,7 @@ export default function SignUpForm() {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           placeholder="you@example.com"
-          className="mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink outline-none placeholder:text-muted focus:border-brand"
+          className="mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-3 text-sm text-ink outline-none placeholder:text-muted focus:border-brand"
         />
 
         <label htmlFor="password" className="mt-4 block text-sm font-medium text-ink">
@@ -97,7 +97,7 @@ export default function SignUpForm() {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           placeholder="কমপক্ষে ৮ অক্ষর"
-          className="mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink outline-none placeholder:text-muted focus:border-brand"
+          className="mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-3 text-sm text-ink outline-none placeholder:text-muted focus:border-brand"
         />
 
         <label htmlFor="confirmPassword" className="mt-4 block text-sm font-medium text-ink">
@@ -111,7 +111,7 @@ export default function SignUpForm() {
           value={confirmPassword}
           onChange={(event) => setConfirmPassword(event.target.value)}
           placeholder="আবার লিখুন"
-          className="mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink outline-none placeholder:text-muted focus:border-brand"
+          className="mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-3 text-sm text-ink outline-none placeholder:text-muted focus:border-brand"
         />
 
         <button

@@ -55,7 +55,7 @@ export default function SocialButtons() {
         type="button"
         onClick={() => handleSocial("google")}
         disabled={pending !== null}
-        className="flex items-center justify-center gap-2 rounded-lg border border-line bg-white px-4 py-2.5 text-sm font-medium text-ink transition hover:bg-flat-soft disabled:opacity-60"
+        className="flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-line bg-white px-3 py-2.5 text-sm font-medium text-ink transition hover:bg-flat-soft disabled:opacity-60"
       >
         {pending === "google" ? (
           <span className="h-4 w-4 animate-spin rounded-full border-2 border-line border-t-brand" />
@@ -68,7 +68,7 @@ export default function SocialButtons() {
         type="button"
         onClick={() => handleSocial("github")}
         disabled={pending !== null}
-        className="flex items-center justify-center gap-2 rounded-lg border border-line bg-white px-4 py-2.5 text-sm font-medium text-ink transition hover:bg-flat-soft disabled:opacity-60"
+        className="flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-line bg-white px-3 py-2.5 text-sm font-medium text-ink transition hover:bg-flat-soft disabled:opacity-60"
       >
         {pending === "github" ? (
           <span className="h-4 w-4 animate-spin rounded-full border-2 border-line border-t-brand" />
