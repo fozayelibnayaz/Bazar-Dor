@@ -34,3 +34,4 @@ export default function RootLayout({
     </html>
   );
 }
+<html lang="bn" className={banglaFont.variable} suppressHydrationWarning></html>

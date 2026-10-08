@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { headers } from "next/headers";
+import { notFound, redirect } from "next/navigation";
+import { auth } from "@/lib/auth";
 import { getProductBySlug } from "@/lib/api";
 import { bnMoney } from "@/lib/bn";
 import { unitLabel, unitShort } from "@/lib/units";
@@ -13,6 +15,13 @@ type Props = { params: Promise<{ slug: string }> };
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
+
+  const session = await auth.api.getSession({ headers: await headers() });
+
+  if (!session) {
+    redirect(`/signin?next=/product/${slug}`);
+  }
+
   const product = await getProductBySlug(slug);
 
   if (!product) {
@@ -49,16 +58,11 @@ export default async function ProductPage({ params }: Props) {
                 {unitLabel(product.unit)} · {product.categoryNameBn}
               </p>
               <p className="mt-2 text-sm text-muted">
-                গতকালের তুলনায় আজ দাম{" "}
-                <span className="font-bold text-ink">{changeWord}</span>
+                গতকালের তুলনায় আজ দাম <span className="font-bold text-ink">{changeWord}</span>
                 {product.change.dir !== "flat" ? (
                   <>
                     {" · "}
-                    <span
-                      className={`font-bold ${
-                        product.change.dir === "up" ? "text-up" : "text-down"
-                      }`}
-                    >
+                    <span className={`font-bold ${product.change.dir === "up" ? "text-up" : "text-down"}`}>
                       {bnMoney(difference)} টাকা
                     </span>
                   </>

@@ -1,17 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 import { signIn } from "@/lib/auth-client";
 import SocialButtons from "@/components/social-buttons";
 
 export default function SignInForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const nextPath = searchParams.get("next") ?? "/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.get("next")) {
+      toast("এই পেজ দেখতে আগে সাইন ইন করুন");
+    }
+  }, [searchParams]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -32,7 +40,7 @@ export default function SignInForm() {
     }
 
     toast.success("সফলভাবে সাইন ইন হয়েছে");
-    router.push("/");
+    router.push(nextPath);
     router.refresh();
   }
 
@@ -43,10 +51,7 @@ export default function SignInForm() {
         বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে আকাউন্টে ঢুকুন।
       </p>
 
-      <form
-        onSubmit={handleSubmit}
-        className="mt-6 rounded-2xl border border-line bg-white p-6 sm:p-7"
-      >
+      <form onSubmit={handleSubmit} className="mt-6 rounded-2xl border border-line bg-white p-6 sm:p-7">
         <label htmlFor="email" className="text-sm font-medium text-ink">
           ইমেইল
         </label>

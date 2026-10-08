@@ -5,6 +5,7 @@ import { connection } from "next/server";
 import { getCategories } from "@/lib/api";
 import { banglaDate } from "@/lib/bn";
 import CategoryPills from "@/components/category-pills";
+import UserMenu from "@/components/user-menu";
 
 async function TodayDate() {
   await connection();
@@ -50,20 +51,7 @@ export default function SiteHeader() {
             </span>
           </Link>
 
-          <div className="flex items-center gap-1.5">
-            <Link
-              href="/signin"
-              className="rounded-lg px-3 py-2 text-sm font-medium text-ink transition hover:bg-flat-soft"
-            >
-              সাইন ইন
-            </Link>
-            <Link
-              href="/signup"
-              className="rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
-            >
-              সাইন আপ
-            </Link>
-          </div>
+          <UserMenu />
         </div>
 
         <div className="mt-3">
