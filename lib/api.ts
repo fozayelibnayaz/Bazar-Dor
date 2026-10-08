@@ -1,6 +1,6 @@
 import type { Category, Product } from "@/types";
 
-const BASE_URL = "https://api.api-store.workers.dev/api/bazardor";
+const BASE_URL = "https://api.abcz.workers.dev/api/bazardor";
 
 export async function getAllProducts(): Promise<Product[]> {
   const res = await fetch(`${BASE_URL}/products`, { cache: "no-store" });
