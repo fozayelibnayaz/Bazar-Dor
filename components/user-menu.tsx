@@ -62,7 +62,7 @@ export default function UserMenu() {
             {initial}
           </span>
         )}
-        <span className="max-w-32 truncate text-sm font-medium text-ink">
+        <span className="hidden max-w-32 truncate text-sm font-medium text-ink sm:block">
           {session.user.name}
         </span>
         <span className="text-muted">▾</span>

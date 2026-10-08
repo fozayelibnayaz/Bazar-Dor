@@ -45,13 +45,13 @@ export default function SignInForm() {
   }
 
   return (
-    <div className="mx-auto max-w-md px-4 py-12">
+    <div className="mx-auto max-w-lg px-4 py-12">
       <h1 className="text-center text-2xl font-bold text-ink sm:text-3xl">সাইন ইন</h1>
       <p className="mt-2 text-center text-sm text-muted">
         বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে আকাউন্টে ঢুকুন।
       </p>
 
-      <form onSubmit={handleSubmit} className="mt-6 rounded-2xl border border-line bg-white p-6 sm:p-7">
+      <form onSubmit={handleSubmit} className="mt-6 rounded-2xl border border-line bg-white p-6 shadow-[0_18px_50px_-30px_rgba(20,22,26,0.4)] sm:p-8">
         <label htmlFor="email" className="text-sm font-medium text-ink">
           ইমেইল
         </label>
