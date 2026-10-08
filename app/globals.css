@@ -27,6 +27,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--color-page);
   color: var(--color-ink);
