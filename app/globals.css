@@ -15,6 +15,16 @@
   --color-muted: #6b7280;
   --color-line: #e8eae6;
   --font-sans: var(--font-bangla);
+  --animate-marquee: marquee 180s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 body {

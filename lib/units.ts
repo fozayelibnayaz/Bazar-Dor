@@ -5,6 +5,17 @@ const unitLabels: Record<string, string> = {
   piece: "প্রতি পিস",
 };
 
+const unitShorts: Record<string, string> = {
+  kg: "কেজি",
+  litre: "লিটার",
+  dozen: "ডজন",
+  piece: "পিস",
+};
+
 export function unitLabel(unit: string) {
   return unitLabels[unit] ?? `প্রতি ${unit}`;
+}
+
+export function unitShort(unit: string) {
+  return unitShorts[unit] ?? unit;
 }
