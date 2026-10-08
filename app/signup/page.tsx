@@ -1,11 +1,22 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { auth } from "@/lib/auth";
 import SignUpForm from "@/components/signup-form";
+
+export const instant = false;
 
 export const metadata: Metadata = {
   title: "সাইন আপ | বাজার দর",
 };
 
-export default function SignUpPage() {
+export default async function SignUpPage() {
+  const session = await auth.api.getSession({ headers: await headers() });
+
+  if (session) {
+    redirect("/");
+  }
+
   return (
     <main className="pb-14">
       <SignUpForm />
