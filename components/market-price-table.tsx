@@ -25,8 +25,8 @@ export default function MarketPriceTable({ markets }: { markets: MarketPrice[] }
               <tr key={row.market} className="border-b border-ink last:border-b-0 even:bg-row">
                 <td className="px-5 py-3 font-medium text-ink">{row.market}</td>
                 <td className="px-5 py-3 text-muted">{row.division}</td>
-                <td className="px-5 py-3 text-ink">{bnMoney(row.min)} টাকা</td>
-                <td className="px-5 py-3 text-ink">{bnMoney(row.max)} টাকা</td>
+                <td className="px-5 py-3 text-muted">{bnMoney(row.min)} টাকা</td>
+                <td className="px-5 py-3 text-muted">{bnMoney(row.max)} টাকা</td>
                 <td className="px-5 py-3 text-right font-bold text-ink">
                   {bnMoney(row.average)} টাকা
                 </td>
