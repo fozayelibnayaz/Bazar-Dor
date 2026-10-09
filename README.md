@@ -2,7 +2,7 @@
 
 BazarDor shows today's prices of everyday essentials in Bangladesh — rice, lentils, oil, vegetables, fish, meat, eggs and spices. You can see the current price, how much it changed since yesterday, and compare prices across 12 city markets.
 
-**Live:** 
+**Live:** https://bazar-dor-ten-tau.vercel.app
 **Repo:** https://github.com/fozayelibnayaz/Bazar-Dor
 
 ## Features
