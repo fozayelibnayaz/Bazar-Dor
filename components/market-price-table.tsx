@@ -1,5 +1,5 @@
 import type { MarketPrice } from "@/types";
-import { bnMoney, bnNumber } from "@/lib/bn";
+import { bnMoney } from "@/lib/bn";
 
 export default function MarketPriceTable({ markets }: { markets: MarketPrice[] }) {
   const rows = [...markets]
@@ -22,23 +22,19 @@ export default function MarketPriceTable({ markets }: { markets: MarketPrice[] }
           </thead>
           <tbody>
             {rows.map((row) => (
-              <tr
-                key={row.market}
-                className="border-b border-line last:border-b-0 even:bg-page"
-              >
+              <tr key={row.market} className="border-b border-ink last:border-b-0 even:bg-row">
                 <td className="px-5 py-3 font-medium text-ink">{row.market}</td>
                 <td className="px-5 py-3 text-muted">{row.division}</td>
-                <td className="px-5 py-3 text-down">{bnMoney(row.min)} টাকা</td>
-                <td className="px-5 py-3 text-up">{bnMoney(row.max)} টাকা</td>
-                <td className="px-5 py-3 text-right font-bold text-ink">{bnMoney(row.average)} টাকা</td>
+                <td className="px-5 py-3 text-ink">{bnMoney(row.min)} টাকা</td>
+                <td className="px-5 py-3 text-ink">{bnMoney(row.max)} টাকা</td>
+                <td className="px-5 py-3 text-right font-bold text-ink">
+                  {bnMoney(row.average)} টাকা
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <p className="mt-2 text-xs text-muted">
-        {bnNumber(markets.length)}টি বাজারের তথ্য — গড় = (সর্বনিম্ন + সর্বোচ্চ) ÷ ২
-      </p>
     </section>
   );
 }

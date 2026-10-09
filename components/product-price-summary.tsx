@@ -20,7 +20,9 @@ export default function ProductPriceSummary({ product }: { product: Product }) {
         {cards.map((card) => (
           <div key={card.label} className="rounded-2xl border border-line bg-white p-5">
             <p className="text-sm text-muted">{card.label}</p>
-            <p className={`mt-1 text-2xl font-bold ${card.tone}`}>{bnMoney(card.value)} টাকা</p>
+            <p className={`mt-1 text-2xl font-bold ${card.tone}`}>
+              {bnMoney(card.value)} <span className="text-base font-normal">টাকা</span>
+            </p>
             <p className="mt-1 text-xs text-muted">{card.note}</p>
           </div>
         ))}
