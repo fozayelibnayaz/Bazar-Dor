@@ -1,43 +1,54 @@
+import { cache } from "react";
 import type { Category, Product } from "@/types";
 
-const BASE_URL = "https://api.abcz.workers.dev/api/bazardor";
+const BASE_URLS = [
+  "https://api.api-store.workers.dev/api/bazardor",
+  "https://api.abcz.workers.dev/api/bazardor",
+];
 
-export async function getAllProducts(): Promise<Product[]> {
-  const res = await fetch(`${BASE_URL}/products`, { cache: "no-store" });
-  if (!res.ok) {
-    throw new Error("পণ্যের তথ্য আনা যায়নি");
+const REVALIDATE_SECONDS = 600;
+
+async function fetchJson<T>(path: string, fallback: T): Promise<T> {
+  for (const baseUrl of BASE_URLS) {
+    try {
+      const res = await fetch(`${baseUrl}${path}`, {
+        next: { revalidate: REVALIDATE_SECONDS },
+      });
+
+      if (!res.ok) {
+        console.warn(`[bazardor] ${baseUrl}${path} -> HTTP ${res.status}`);
+        continue;
+      }
+
+      return (await res.json()) as T;
+    } catch (error) {
+      console.warn(`[bazardor] ${baseUrl}${path} -> ${String(error)}`);
+    }
   }
-  return res.json();
+
+  return fallback;
 }
+
+export const getAllProducts = cache(async (): Promise<Product[]> => {
+  return fetchJson<Product[]>("/products", []);
+});
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   const products = await getAllProducts();
-  const product = products.find((item) => item.slug === slug);
-  return product ?? null;
+
+  return products.find((item) => item.slug === slug) ?? null;
 }
 
-export async function getProductsByCategory(category: string): Promise<Product[]> {
-  const res = await fetch(`${BASE_URL}/products?category=${category}`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("পণ্যের তথ্য আনা যায়নি");
-  }
-  return res.json();
-}
+export const getProductsByCategory = cache(async (category: string): Promise<Product[]> => {
+  return fetchJson<Product[]>(`/products?category=${category}`, []);
+});
 
-export async function getCategories(): Promise<Category[]> {
-  const res = await fetch(`${BASE_URL}/categories`, { cache: "no-store" });
-  if (!res.ok) {
-    throw new Error("ক্যাটাগরির তথ্য আনা যায়নি");
-  }
-  return res.json();
-}
+export const getCategories = cache(async (): Promise<Category[]> => {
+  return fetchJson<Category[]>("/categories", []);
+});
 
 export async function getCategoryBySlug(slug: string): Promise<Category | null> {
-  const res = await fetch(`${BASE_URL}/categories/${slug}`, { cache: "no-store" });
-  if (!res.ok) {
-    return null;
-  }
-  return res.json();
+  const categories = await getCategories();
+
+  return categories.find((item) => item.slug === slug) ?? null;
 }
